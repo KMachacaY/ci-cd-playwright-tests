@@ -5,11 +5,20 @@ on:
     branches:
       - main
 
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+  actions: read
+  checks: write
+
 jobs:
   test:
     runs-on: ubuntu-latest
-    env: 
-      API_URL: ${{ secrets.QA_API_URL }} 
+    env:
+      API_URL: ${{ secrets.QA_API_URL }}
       AUTH_TOKEN: ${{ secrets.QA_TOKEN }}
 
     steps:
@@ -25,25 +34,34 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Install Playwright browsers 
-        run: npx playwright install chromium --with-deps 
- 
-      - name: Validate secrets are configured 
-        run: | 
-          echo "Checking secret configuration..." 
-          if [ -z "$API_URL" ]; then 
-            echo "WARNING: QA_API_URL secret is not set - using config default" 
-          else 
-            echo "API_URL is set - length: ${#API_URL}" 
-          fi 
-          if [ -z "$AUTH_TOKEN" ]; then 
-            echo "WARNING: QA_TOKEN secret is not set - running without auth" 
-          else 
-            echo "AUTH_TOKEN is set - length: ${#AUTH_TOKEN}" 
-          fi 
- 
-      - name: Run all Playwright tests 
-        run: npx playwright test --project=chromium 
+      - name: Install Playwright browsers
+        run: npx playwright install chromium --with-deps
+
+      - name: Validate secrets are configured
+        run: |
+          echo "Checking secret configuration..."
+          if [ -z "$API_URL" ]; then
+            echo "WARNING: QA_API_URL secret is not set - using config default"
+          else
+            echo "API_URL is set - length: ${#API_URL}"
+          fi
+          if [ -z "$AUTH_TOKEN" ]; then
+            echo "WARNING: QA_TOKEN secret is not set - running without auth"
+          else
+            echo "AUTH_TOKEN is set - length: ${#AUTH_TOKEN}"
+          fi
+
+      - name: Run all Playwright tests
+        run: npx playwright test --project=chromium
+
+      - name: Publish test report
+        uses: dorny/test-reporter@v1
+        if: always()
+        with:
+          name: Playwright Test Results
+          path: test-results/junit-results.xml
+          reporter: jest-junit
+          fail-on-error: 'false'
 
       - name: Upload Playwright HTML report
         if: always()
@@ -68,4 +86,3 @@ jobs:
           name: test-artifacts
           path: test-results/
           retention-days: 7
-

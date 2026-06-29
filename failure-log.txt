@@ -1,0 +1,91 @@
+test	Run all Playwright tests	﻿2026-06-29T20:35:50.3627503Z ##[group]Run npx playwright test --project=chromium
+test	Run all Playwright tests	2026-06-29T20:35:50.3627928Z ^[[36;1mnpx playwright test --project=chromium^[[0m
+test	Run all Playwright tests	2026-06-29T20:35:50.3656602Z shell: /usr/bin/bash -e {0}
+test	Run all Playwright tests	2026-06-29T20:35:50.3656870Z env:
+test	Run all Playwright tests	2026-06-29T20:35:50.3657158Z   API_URL: ***
+test	Run all Playwright tests	2026-06-29T20:35:50.3657472Z   AUTH_TOKEN: ***
+test	Run all Playwright tests	2026-06-29T20:35:50.3657696Z ##[endgroup]
+test	Run all Playwright tests	2026-06-29T20:35:51.7950313Z 
+test	Run all Playwright tests	2026-06-29T20:35:51.7951013Z Running 7 tests using 1 worker
+test	Run all Playwright tests	2026-06-29T20:35:51.7974089Z 
+test	Run all Playwright tests	2026-06-29T20:35:53.9299479Z API_URL length: 22
+test	Run all Playwright tests	2026-06-29T20:35:54.4251217Z   ✓  1 [chromium] › tests/env-config.spec.js:5:3 › Environment Configuration › API_URL is configured (528ms)
+test	Run all Playwright tests	2026-06-29T20:35:54.4359570Z AUTH_TOKEN present: true
+test	Run all Playwright tests	2026-06-29T20:35:54.4360251Z AUTH_TOKEN length: 30
+test	Run all Playwright tests	2026-06-29T20:35:54.4421676Z   ✓  2 [chromium] › tests/env-config.spec.js:19:3 › Environment Configuration › AUTH_TOKEN is accessible (2ms)
+test	Run all Playwright tests	2026-06-29T20:35:54.9050204Z   ✓  3 [chromium] › tests/failing.spec.js:5:3 › Failing Tests - For CI Verification › this test passes (447ms)
+test	Run all Playwright tests	2026-06-29T20:36:00.6099175Z   ✘  4 [chromium] › tests/failing.spec.js:10:3 › Failing Tests - For CI Verification › INTENTIONAL FAIL - wrong title (5.7s)
+test	Run all Playwright tests	2026-06-29T20:36:07.0443450Z   ✘  5 [chromium] › tests/failing.spec.js:10:3 › Failing Tests - For CI Verification › INTENTIONAL FAIL - wrong title (retry #1) (5.8s)
+test	Run all Playwright tests	2026-06-29T20:36:08.2244561Z   ✓  6 [chromium] › tests/main.spec.js:5:3 › Main Tests › homepage loads correctly (567ms)
+test	Run all Playwright tests	2026-06-29T20:36:08.8633729Z   ✓  7 [chromium] › tests/main.spec.js:10:3 › Main Tests › docs page loads (625ms)
+test	Run all Playwright tests	2026-06-29T20:36:09.3289460Z   ✓  8 [chromium] › tests/main.spec.js:17:3 › Main Tests › page has navigation links (451ms)
+test	Run all Playwright tests	2026-06-29T20:36:09.3924839Z 
+test	Run all Playwright tests	2026-06-29T20:36:09.3934801Z 
+test	Run all Playwright tests	2026-06-29T20:36:09.3936826Z   1) [chromium] › tests/failing.spec.js:10:3 › Failing Tests - For CI Verification › INTENTIONAL FAIL - wrong title 
+test	Run all Playwright tests	2026-06-29T20:36:09.3937694Z 
+test	Run all Playwright tests	2026-06-29T20:36:09.3938012Z     Error: expect(page).toHaveTitle(expected) failed
+test	Run all Playwright tests	2026-06-29T20:36:09.3938528Z 
+test	Run all Playwright tests	2026-06-29T20:36:09.3938859Z     Expected pattern: /This Title Does Not Exist/
+test	Run all Playwright tests	2026-06-29T20:36:09.3940104Z     Received string:  "Fast and reliable end-to-end testing for modern web apps | Playwright"
+test	Run all Playwright tests	2026-06-29T20:36:09.3941011Z     Timeout: 5000ms
+test	Run all Playwright tests	2026-06-29T20:36:09.3941264Z 
+test	Run all Playwright tests	2026-06-29T20:36:09.3941431Z     Call log:
+test	Run all Playwright tests	2026-06-29T20:36:09.3941957Z       - Expect "toHaveTitle" with timeout 5000ms
+test	Run all Playwright tests	2026-06-29T20:36:09.3943322Z         14 × unexpected value "Fast and reliable end-to-end testing for modern web apps | Playwright"
+test	Run all Playwright tests	2026-06-29T20:36:09.3944033Z 
+test	Run all Playwright tests	2026-06-29T20:36:09.3944050Z 
+test	Run all Playwright tests	2026-06-29T20:36:09.3944485Z       10 |   test('INTENTIONAL FAIL - wrong title', async ({ page }) => {
+test	Run all Playwright tests	2026-06-29T20:36:09.3945252Z       11 |     await page.goto('/');
+test	Run all Playwright tests	2026-06-29T20:36:09.3946065Z     > 12 |     await expect(page).toHaveTitle(/This Title Does Not Exist/);
+test	Run all Playwright tests	2026-06-29T20:36:09.3946629Z          |                        ^
+test	Run all Playwright tests	2026-06-29T20:36:09.3946906Z       13 |   });
+test	Run all Playwright tests	2026-06-29T20:36:09.3947144Z       14 |
+test	Run all Playwright tests	2026-06-29T20:36:09.3947349Z       15 | });
+test	Run all Playwright tests	2026-06-29T20:36:09.3947857Z         at /home/runner/work/ci-cd-playwright-tests/ci-cd-playwright-tests/tests/failing.spec.js:12:24
+test	Run all Playwright tests	2026-06-29T20:36:09.3948268Z 
+test	Run all Playwright tests	2026-06-29T20:36:09.3948867Z     attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+test	Run all Playwright tests	2026-06-29T20:36:09.3949969Z     test-results/failing-Failing-Tests---Fo-bd2f0-ENTIONAL-FAIL---wrong-title-chromium/test-failed-1.png
+test	Run all Playwright tests	2026-06-29T20:36:09.3950901Z     ────────────────────────────────────────────────────────────────────────────────────────────────
+test	Run all Playwright tests	2026-06-29T20:36:09.3951218Z 
+test	Run all Playwright tests	2026-06-29T20:36:09.3951656Z     attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+test	Run all Playwright tests	2026-06-29T20:36:09.3952761Z     test-results/failing-Failing-Tests---Fo-bd2f0-ENTIONAL-FAIL---wrong-title-chromium/video.webm
+test	Run all Playwright tests	2026-06-29T20:36:09.3953643Z     ────────────────────────────────────────────────────────────────────────────────────────────────
+test	Run all Playwright tests	2026-06-29T20:36:09.3954175Z 
+test	Run all Playwright tests	2026-06-29T20:36:09.3954677Z     Error Context: test-results/failing-Failing-Tests---Fo-bd2f0-ENTIONAL-FAIL---wrong-title-chromium/error-context.md
+test	Run all Playwright tests	2026-06-29T20:36:09.3955204Z 
+test	Run all Playwright tests	2026-06-29T20:36:09.3955638Z     Retry #1 ───────────────────────────────────────────────────────────────────────────────────────
+test	Run all Playwright tests	2026-06-29T20:36:09.3955961Z 
+test	Run all Playwright tests	2026-06-29T20:36:09.3956141Z     Error: expect(page).toHaveTitle(expected) failed
+test	Run all Playwright tests	2026-06-29T20:36:09.3956400Z 
+test	Run all Playwright tests	2026-06-29T20:36:09.3956566Z     Expected pattern: /This Title Does Not Exist/
+test	Run all Playwright tests	2026-06-29T20:36:09.3957149Z     Received string:  "Fast and reliable end-to-end testing for modern web apps | Playwright"
+test	Run all Playwright tests	2026-06-29T20:36:09.3957630Z     Timeout: 5000ms
+test	Run all Playwright tests	2026-06-29T20:36:09.3957807Z 
+test	Run all Playwright tests	2026-06-29T20:36:09.3957895Z     Call log:
+test	Run all Playwright tests	2026-06-29T20:36:09.3958216Z       - Expect "toHaveTitle" with timeout 5000ms
+test	Run all Playwright tests	2026-06-29T20:36:09.3958920Z         14 × unexpected value "Fast and reliable end-to-end testing for modern web apps | Playwright"
+test	Run all Playwright tests	2026-06-29T20:36:09.3959397Z 
+test	Run all Playwright tests	2026-06-29T20:36:09.3959419Z 
+test	Run all Playwright tests	2026-06-29T20:36:09.3960122Z       10 |   test('INTENTIONAL FAIL - wrong title', async ({ page }) => {
+test	Run all Playwright tests	2026-06-29T20:36:09.3960592Z       11 |     await page.goto('/');
+test	Run all Playwright tests	2026-06-29T20:36:09.3961035Z     > 12 |     await expect(page).toHaveTitle(/This Title Does Not Exist/);
+test	Run all Playwright tests	2026-06-29T20:36:09.3961443Z          |                        ^
+test	Run all Playwright tests	2026-06-29T20:36:09.3961700Z       13 |   });
+test	Run all Playwright tests	2026-06-29T20:36:09.3961974Z       14 |
+test	Run all Playwright tests	2026-06-29T20:36:09.3962321Z       15 | });
+test	Run all Playwright tests	2026-06-29T20:36:09.3963158Z         at /home/runner/work/ci-cd-playwright-tests/ci-cd-playwright-tests/tests/failing.spec.js:12:24
+test	Run all Playwright tests	2026-06-29T20:36:09.3963793Z 
+test	Run all Playwright tests	2026-06-29T20:36:09.3964282Z     attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+test	Run all Playwright tests	2026-06-29T20:36:09.3965124Z     test-results/failing-Failing-Tests---Fo-bd2f0-ENTIONAL-FAIL---wrong-title-chromium-retry1/test-failed-1.png
+test	Run all Playwright tests	2026-06-29T20:36:09.3966008Z     ────────────────────────────────────────────────────────────────────────────────────────────────
+test	Run all Playwright tests	2026-06-29T20:36:09.3966308Z 
+test	Run all Playwright tests	2026-06-29T20:36:09.3966754Z     attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+test	Run all Playwright tests	2026-06-29T20:36:09.3967499Z     test-results/failing-Failing-Tests---Fo-bd2f0-ENTIONAL-FAIL---wrong-title-chromium-retry1/video.webm
+test	Run all Playwright tests	2026-06-29T20:36:09.3968321Z     ────────────────────────────────────────────────────────────────────────────────────────────────
+test	Run all Playwright tests	2026-06-29T20:36:09.3968599Z 
+test	Run all Playwright tests	2026-06-29T20:36:09.3969102Z     Error Context: test-results/failing-Failing-Tests---Fo-bd2f0-ENTIONAL-FAIL---wrong-title-chromium-retry1/error-context.md
+test	Run all Playwright tests	2026-06-29T20:36:09.3969993Z 
+test	Run all Playwright tests	2026-06-29T20:36:09.3970159Z   1 failed
+test	Run all Playwright tests	2026-06-29T20:36:09.3971314Z     [chromium] › tests/failing.spec.js:10:3 › Failing Tests - For CI Verification › INTENTIONAL FAIL - wrong title 
+test	Run all Playwright tests	2026-06-29T20:36:09.3971864Z   6 passed (18.1s)
+test	Run all Playwright tests	2026-06-29T20:36:09.4188864Z ##[error]Process completed with exit code 1.
