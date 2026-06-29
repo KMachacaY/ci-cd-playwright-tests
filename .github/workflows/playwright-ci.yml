@@ -8,6 +8,9 @@ on:
 jobs:
   test:
     runs-on: ubuntu-latest
+    env: 
+      API_URL: ${{ secrets.QA_API_URL }} 
+      AUTH_TOKEN: ${{ secrets.QA_TOKEN }}
 
     steps:
       - name: Checkout repository
@@ -17,12 +20,27 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: '20'
+          cache: 'npm'
 
       - name: Install dependencies
         run: npm ci
 
-      - name: Install Playwright browsers
-        run: npx playwright install chromium --with-deps
-
-      - name: Run tests
-        run: npm test
+      - name: Install Playwright browsers 
+        run: npx playwright install chromium --with-deps 
+ 
+      - name: Validate secrets are configured 
+        run: | 
+          echo "Checking secret configuration..." 
+          if [ -z "$API_URL" ]; then 
+            echo "WARNING: QA_API_URL secret is not set - using config default" 
+          else 
+            echo "API_URL is set - length: ${#API_URL}" 
+          fi 
+          if [ -z "$AUTH_TOKEN" ]; then 
+            echo "WARNING: QA_TOKEN secret is not set - running without auth" 
+          else 
+            echo "AUTH_TOKEN is set - length: ${#AUTH_TOKEN}" 
+          fi 
+ 
+      - name: Run all Playwright tests 
+        run: npx playwright test --project=chromium 
