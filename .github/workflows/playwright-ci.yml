@@ -44,3 +44,28 @@ jobs:
  
       - name: Run all Playwright tests 
         run: npx playwright test --project=chromium 
+
+      - name: Upload Playwright HTML report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: playwright-html-report
+          path: playwright-report/
+          retention-days: 30
+
+      - name: Upload JUnit XML report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: junit-xml-report
+          path: test-results/junit-results.xml
+          retention-days: 30
+
+      - name: Upload failure evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: test-artifacts
+          path: test-results/
+          retention-days: 7
+
